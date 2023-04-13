@@ -99,8 +99,7 @@ class Util:
 
     @staticmethod
     def read_csv_file(file_path):
-        with open('/Users/daniel626/Desktop/TSP_GA/project_TSP_GA/source_02/csv/TSP.csv', mode='r', newline='', encoding='utf-8-sig') as tsp:
-            ## /Users/daniel626/Desktop/TSP_GA/project_TSP_GA/source_02/csv/TSP.csv
+        with open(file_path, mode='r', newline='', encoding='utf-8-sig') as tsp:
             reader = csv.reader(tsp)
             cities = []
             for row in reader:
