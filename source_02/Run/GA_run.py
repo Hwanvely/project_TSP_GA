@@ -50,9 +50,28 @@ for i in range(ITERATOR):
             result_list = sol_list_cost[i][0]
             result_cost = sol_list_cost[i][1]
 
-f = open('./csv/sol_random_GA.csv', mode='w', newline='')
-wr = csv.writer(f)
-for i in result_list:
-    wr.writerow([i])
+##### 파일 쓰고 정렬 후 다시 쓰기 ######
+with open('./csv/sol_random_GA.csv', mode='w', newline='') as f:
+    wr = csv.writer(f)
+    for i in result_list:
+        wr.writerow([i])
+
+sol = []
+with open('./csv/sol_random_GA.csv', mode='r', newline='') as solution:
+    reader = csv.reader(solution)
+    for row in reader:
+        sol.append(int(row[0]))
+
+    idx = sol.index(0)
+    front = sol[idx:]
+    back = sol[0:idx]
+    sol = front + back
+    sol.append(int(0))
+
+with open('./csv/sol_random_GA.csv',mode='w',newline='') as solutionList:
+    wr = csv.writer(solutionList)
+    for i in sol:
+        wr.writerow([i])
+
 print(result_list)
 print(result_cost)

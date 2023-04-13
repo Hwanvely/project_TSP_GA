@@ -1,3 +1,4 @@
+import dist
 from visualize import VisPlot
 from util import Util
 import paths
@@ -11,7 +12,7 @@ for item in sol_df.values:
     sol_list.append(item[0])
 
 vis = VisPlot()
-vis.set_size(100, 120)
+vis.set_size(100, 100)
 
 start_flag = True
 
@@ -25,7 +26,10 @@ for item in data_list:
 for idx in range(len(sol_list)-1):
     vis.draw_line(data_list[sol_list[idx]], data_list[sol_list[idx+1]])
 
+total_dist = dist.total_cost(sol_list[:-1])
+
 vis.draw_line(data_list[sol_list[len(sol_list)-1]], data_list[sol_list[0]])
-vis.save("img.png")
+# 이미지 저장할때 total_dist를 제목으로 넣어 제대로 된 출력
+vis.save("img.png",total_dist)
 vis.show()
 

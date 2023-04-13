@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 
 
+
 class Util:
     """
     ! "city" or "cities" 데이터는 예를 들어 "TSP.csv"를 의미함
@@ -64,7 +65,7 @@ class Util:
     @staticmethod
     def saveData(data: pd.DataFrame, path: Path, name: str) -> None:
         Util.checkPath(path)
-        data.to_csv(path / name, sep=",", header=False, index=False, encoding="UTF-8", lineterminator="\n")
+        data.to_csv(path / name, sep=",", header=False, index=False, encoding="UTF-8", line_terminator="\n") # _ lineterminator 넣음
 
     @staticmethod
     def distance(x, y) -> float:
@@ -75,9 +76,10 @@ class Util:
         total_cost = 0.0
         sol_ = sol_with_loc.values.tolist()
 
+        # total_cost 더하기에 distances 전역변수 사용
         for idx in range(len(sol_) - 1):
-            total_cost += Util.distance(sol_[idx], sol_[idx + 1])
-
+            total_cost += Util.distance(sol_[idx],sol_[idx+1])
+        #
         return total_cost
 
     @staticmethod
@@ -97,7 +99,8 @@ class Util:
 
     @staticmethod
     def read_csv_file(file_path):
-        with open(file_path, mode='r', newline='', encoding='utf-8-sig') as tsp:
+        with open('/Users/daniel626/Desktop/TSP_GA/project_TSP_GA/source_02/csv/TSP.csv', mode='r', newline='', encoding='utf-8-sig') as tsp:
+            ## /Users/daniel626/Desktop/TSP_GA/project_TSP_GA/source_02/csv/TSP.csv
             reader = csv.reader(tsp)
             cities = []
             for row in reader:

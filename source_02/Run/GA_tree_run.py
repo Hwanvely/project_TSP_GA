@@ -6,7 +6,7 @@ import csv
 from treeGA import Tree
 
 N = 100  # 초기집단의 수
-ITERATOR = 1000  # 유전 알고리즘의 반복횟수
+ITERATOR = 1000 # 유전 알고리즘의 반복횟수
 
 # treesearch를 초기집단으로 해서 유전알고리즘을 한 번 돌리는 과정
 fitness = Tree.sort_distance_tree(N)
